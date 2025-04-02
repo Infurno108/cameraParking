@@ -1,0 +1,28 @@
+/* General styles */
+* {
+    font-family: Geneva, sans-serif;
+}
+body {
+    background-color: #d1d1d1; /* Off white color */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+.header {
+    background-color: #003366; /* Dark blue color */
+    color: #ff6600; /* Orange text */
+    padding: 10px;
+    text-align: center;
+
+}
+
+.cell {
+    padding: 10px;
+    background-color: #003366;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
