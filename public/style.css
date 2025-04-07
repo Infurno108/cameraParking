@@ -17,9 +17,21 @@ body {
 
 }
 
+.map {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+}
+
 .cell {
     padding: 10px;
-    background-color: #003366;
+    background-color: #779abe;
+    height: 50px;
+    width: 50px;
+}
+
+.cellActive {
+    background-color: #ff6600; /* Orange color for active cells */
 }
 
 header h1 {
