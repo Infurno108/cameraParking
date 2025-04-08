@@ -21,17 +21,22 @@ body {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 5px;
+    margin: 25px auto;
+    width: 80%;
 }
 
 .cell {
     padding: 10px;
     background-color: #779abe;
-    height: 50px;
-    width: 50px;
+    height: 25px;
+    width: 25px;
 }
 
-.cellActive {
+.parkedCell {
     background-color: #ff6600; /* Orange color for active cells */
+    height: 25px;
+    width: 25px;
+    padding: 10px;
 }
 
 header h1 {
