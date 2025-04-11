@@ -33,7 +33,7 @@ app.get("/yoink", (request, response) => {
 });
 
 app.get("/demo", (request, response) => {
-  exec("curl http://10.100.230.16", (error, stdout, stderr) => {
+  exec("curl http://10.100.230.16:3030/status", (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;
