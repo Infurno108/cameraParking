@@ -1,5 +1,8 @@
 var express = require("express");
+const { exec } = require("child_process");
 var app = express();
+
+const ip = ""
 
 app.use(express.static("public"));
 
@@ -12,6 +15,18 @@ app.get("/status", (request, response) => {
     Status: "running",
   };
   response.send(status);
+});
+
+app.get("/yoink", (request, response) => {
+    exec("curl -O http://" + ip + "/images/yoink.png", (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      console.log(`stdout: ${stdout}`);
+      console.error(`stderr: ${stderr}`);
+    });
+    response.send("yoink");
 });
 
 var server = app.listen(3030, function () {
