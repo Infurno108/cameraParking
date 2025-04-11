@@ -1,5 +1,6 @@
 const matrix = 10;
-const grid = [ //this will be provided by the server live
+const grid = [
+  //this will be provided by the server live
   [0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
   [0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
   [1, 0, 0, 0, 0, 1, 0, 0, 0, 0],
@@ -43,4 +44,11 @@ function parkCell(i, j) {
   cell.className = "parkedCell";
 }
 
-document.onload(siteLoad());
+function driver() {
+  siteLoad();
+  setTimeout(() => {
+    changeCells(grid);
+  }, 1000);
+}
+
+document.onload(driver());
