@@ -8,6 +8,10 @@ app.get("/status", (request, response) => {
   response.send(status);
 });
 
+app.get("/yoink", (request, response) => {
+  response.sendFile("guestCode/yoink.jpg", { root: __dirname });
+});
+
 var server = app.listen(3030, function () {
   var host = "localhost";
   var port = server.address().port;

@@ -2,7 +2,7 @@ var express = require("express");
 const { exec } = require("child_process");
 var app = express();
 
-const ip = "";
+const ip = "127.0.0.1:3030";
 
 app.use(express.static("public"));
 
@@ -18,17 +18,14 @@ app.get("/status", (request, response) => {
 });
 
 app.get("/yoink", (request, response) => {
-  exec(
-    "curl -O http://" + ip + "/images/yoink.png",
-    (error, stdout, stderr) => {
-      if (error) {
-        console.error(`exec error: ${error}`);
-        return;
-      }
-      console.log(`stdout: ${stdout}`);
-      console.error(`stderr: ${stderr}`);
+  exec("curl -O http://" + ip + "/yoink.png", (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
     }
-  );
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+  });
   response.send("yoink");
 });
 
@@ -44,7 +41,7 @@ app.get("/demo", (request, response) => {
   response.send("demo");
 });
 
-var server = app.listen(3030, function () {
+var server = app.listen(8080, function () {
   var host = "localhost";
   var port = server.address().port;
   console.log("Server listening at http://%s:%s", host, port);
