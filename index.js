@@ -1,5 +1,9 @@
 var express = require("express");
 const { exec } = require("child_process");
+const fs = require("fs");
+const path = require("path");
+const fetch = require("node-fetch");
+const { Blob } = require("buffer");
 var app = express();
 
 const ip = "127.0.0.1:3030";
@@ -18,14 +22,22 @@ app.get("/status", (request, response) => {
 });
 
 app.get("/yoink", (request, response) => {
-  exec("curl -O http://" + ip + "/yoink.png", (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
-  });
+  fetch(`http://${ip}/yoink`)
+    .then((response) => response.arrayBuffer())
+    .then((buffer) => {
+      const image = new Blob([buffer], { type: "image/png" });
+      const imageUrl = URL.createObjectURL(image);
+      return imageUrl;
+    })
+    .then((data) => {
+      console.log(`Response: ${data}`);
+    })
+    .catch((error) => {
+      console.error(`Fetch error: ${error}`);
+    });
+
+  const imagePath = path.join(__dirname, "yoink.jpg");
+
   response.send("yoink");
 });
 
