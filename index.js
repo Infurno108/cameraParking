@@ -2,7 +2,7 @@ var express = require("express");
 const { exec } = require("child_process");
 const fs = require("fs");
 const path = require("path");
-const fetch = require("node-fetch");
+//const fetch = require("node-fetch");
 const { Blob } = require("buffer");
 var app = express();
 
@@ -26,8 +26,9 @@ app.get("/yoink", (request, response) => {
     .then((response) => response.arrayBuffer())
     .then((buffer) => {
       const image = new Blob([buffer], { type: "image/png" });
-      const imageUrl = URL.createObjectURL(image);
-      return imageUrl;
+      fs.writeFileSync("yoink.jpg", Buffer.from(buffer));
+      console.log("Image saved as yoink.jpg");
+      return "gaming";
     })
     .then((data) => {
       console.log(`Response: ${data}`);
