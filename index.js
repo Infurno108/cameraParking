@@ -2,7 +2,7 @@ var express = require("express");
 const { exec } = require("child_process");
 const fs = require("fs");
 const path = require("path");
-//const fetch = require("node-fetch");
+const fetch = require("node-fetch");
 const { Blob } = require("buffer");
 var app = express();
 
