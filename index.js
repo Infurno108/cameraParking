@@ -10,8 +10,14 @@ const ip = "127.0.0.1:3030";
 
 app.use(express.static("public"));
 
+app.use(express.static("hahaDoom"));
+
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
+});
+
+app.get("/doom", function (req, res) {
+  res.sendFile(__dirname + "/hahaDoom/index.html");
 });
 
 app.get("/status", (request, response) => {
