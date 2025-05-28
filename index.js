@@ -48,18 +48,6 @@ app.get("/yoink", (request, response) => {
   response.send("yoink");
 });
 
-app.get("/demo", (request, response) => {
-  exec("curl http://10.100.230.16:3030/status", (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
-  });
-  response.send("demo");
-});
-
 var server = app.listen(8080, function () {
   var host = "localhost";
   var port = server.address().port;

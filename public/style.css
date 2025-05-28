@@ -1,6 +1,7 @@
 /* General styles */
 * {
     font-family: Geneva, sans-serif;
+
 }
 body {
     background-color: #d1d1d1; /* Off white color */
@@ -13,30 +14,44 @@ body {
     background-color: #003366; /* Dark blue color */
     color: #ff6600; /* Orange text */
     padding: 10px;
-    text-align: center;
+    border-bottom: 5px solid #ff6600; /* Blue underline */
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    text-indent: 20px;
+}
 
+#logo {
+    right: 0;
+    height: 250px;
 }
 
 .map {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    grid-auto-columns: 30px;
     gap: 5px;
-    margin: 25px auto;
-    width: 80%;
+    margin: 0 auto;
+    width: 450px;
+    transform: perspective(100px) rotateX(5deg);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
 }
 
 .cell {
     padding: 10px;
     background-color: #779abe;
-    height: 25px;
-    width: 25px;
+    height: 15px;
+    width: 15px;
 }
 
 .parkedCell {
     background-color: #ff6600; /* Orange color for active cells */
-    height: 25px;
-    width: 25px;
+    height: 15px;
+    width: 15px;
     padding: 10px;
+    
 }
 
 header h1 {
